@@ -319,3 +319,44 @@ function playMelody(){
     },500)
     
 }
+
+function showEndScreen(){
+    const time = END_TIME-START_TIME
+    document.getElementById("scoreValue").innerHTML="Score: "+time
+    document.getElementById("endScreen").style.display="block"
+
+}
+
+function showMenu(){
+    document.getElementById("endScreen").style.display="none"
+    document.getElementById("menuItems").style.display="block"
+}
+
+function showScores(){
+    document.getElementById("endScreen").style.display="none"
+    document.getElementById("scoresScreen").style.display="block"
+    document.getElementById("scores-container").innerHTML="Loading..."
+    getScores()
+}
+
+function getScores(){
+    fetch("server.php").then(function(response){
+        response.json().then(function(data){
+            document.getElementById("scores-container").innerHTML=formatScores(data)
+        })
+    })
+}
+
+function formatScores(data){
+    let html ="<table style='width:100%;text-align:center;'>"
+    html+="<tr style='background:rgb(123,146,196);color:white;'>"
+    html+="<td></td><td><b>Easy</b></td><td><b>Time</b></td></tr>"
+
+    for(let i=0;i<data["easy"].length;i++){
+        html+="<tr>"
+        html+="<td>"+(i+1)+".</td><td title='"+data["easy"][i]["name"]+
+        "'>"+data["easy"][i]["Name"]+"</td><td>"+data["easy"][i]["Time"]+
+        "</td></tr>"
+    }
+    return html
+}

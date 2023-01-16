@@ -9,27 +9,50 @@
 </head>
 <body onload="main()">
     <canvas id="myCanvas"></canvas>
-    <div id="menuItems">
+    <div id="menuItems" class="menu">
         <div id="menu">
-            Difficulty <select id="difficulty" onchange="setDifficulty()">
-                <option value="ez">Easy</option>
-                <option value="medium">Medium</option>
-                <option value="hard">Hard</option>
-                <option value="extreme">Extreme</option>
-            </select>
-            <br>
-            <ion-icon name="extension-puzzle-outline"></ion-icon>
-            <ion-icon name="extension-puzzle"></ion-icon>
-            <ion-icon name="extension-puzzle-outline"></ion-icon>
-            <br>
-            <button onclick="restart()">Start</button>
+            <div class="controls">
+                Difficulty <select id="difficulty" onchange="setDifficulty()">
+                    <option value="ez">Easy</option>
+                    <option value="medium">Medium</option>
+                    <option value="hard">Hard</option>
+                    <option value="extreme">Extreme</option>
+                </select>
+                <br>
+                <ion-icon name="extension-puzzle-outline"></ion-icon>
+                <ion-icon name="extension-puzzle"></ion-icon>
+                <ion-icon name="extension-puzzle-outline"></ion-icon>
+                <br>
+                <button onclick="restart()">Start</button>
+            </div>
         </div>
     </div>
     
+    <div id="endScreen" class="menu" style="display:none">
+        <ion-icon name="extension-puzzle-outline"></ion-icon>
+        <ion-icon name="extension-puzzle"></ion-icon>
+        <ion-icon name="extension-puzzle-outline"></ion-icon>
+        <div id="scoreValue"></div>
+            <input type="text" id="name" placeholder="your name">
+            <button onclick="saveScore()" id="saveBtn">Save</button>
+            <br>
+            <br>
+            <button onclick="showScores()">Show Scores</button>
+            <button onclick="showMenu()">Menu</button>
+    </div>
+
+    <div id="scoresScreen" class="menu" style="display:none">
+        <ion-icon name="extension-puzzle-outline"></ion-icon>
+        <ion-icon name="extension-puzzle"></ion-icon>
+        <ion-icon name="extension-puzzle-outline"></ion-icon>
+        <div id="scores-container"></div>
+        <br>
+        <button onclick="closeScores()">Back</button>
+    </div>
     
     <div id="time"></div>
     <script src="./script.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 </html>
